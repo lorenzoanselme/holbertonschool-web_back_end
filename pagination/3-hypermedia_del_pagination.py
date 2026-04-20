@@ -40,13 +40,13 @@ class Server:
             index = 0
 
         indexed_data = self.indexed_dataset()
-        assert isinstance(index, int) and index >= 0 and index < len(self.dataset())
+        assert isinstance(index, int) and index >= 0 and index < len(indexed_data)
         assert isinstance(page_size, int) and page_size > 0
 
         data = []
         current_index = index
 
-        while len(data) < page_size and current_index < len(self.dataset()):
+        while len(data) < page_size:
             if current_index in indexed_data:
                 data.append(indexed_data[current_index])
             current_index += 1
